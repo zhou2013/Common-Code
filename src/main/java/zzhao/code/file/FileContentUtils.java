@@ -1,8 +1,3 @@
-/*
- * @(#) FileContentUtils.java 2014-5-29
- * 
- * Copyright 2013 NetEase.com, Inc. All rights reserved.
- */
 package zzhao.code.file;
 
 import java.io.BufferedReader;
@@ -22,7 +17,7 @@ import com.google.common.collect.Sets;
 
 /**
  *
- * @author hzzhaozhou
+ * @author zzhao
  * @version 2014-5-29
  */
 public class FileContentUtils {

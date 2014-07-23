@@ -1,8 +1,3 @@
-/*
- * @(#) ThreadWatcher.java 2014-7-11
- * 
- * Copyright 2013 NetEase.com, Inc. All rights reserved.
- */
 package zzhao.code.concurrent;
 
 import java.util.Iterator;
@@ -17,7 +12,7 @@ import com.google.common.collect.Lists;
 
 /**
  * 从netty那边看到的，监控线程是不是死了,如果死了就执行一下指定的代码
- * @author hzzhaozhou
+ * @author zzhao
  * @version 2014-7-11
  */
 public class ThreadDeathWatcher {
