@@ -11,6 +11,7 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethodBase;
 import org.apache.commons.httpclient.SimpleHttpConnectionManager;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.httpclient.params.HttpMethodParams;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.mozilla.intl.chardet.nsDetector;
@@ -29,7 +30,7 @@ public class HttpContentUtils {
     private static final Logger logger = Logger.getLogger(HttpContentUtils.class);
     
     public static void main(String[] args) {
-        String content = getHtmlContent("http://www.sanodor.nl/logs/vip.163Signon.htm");
+        String content = getHtmlContent("http://123.58.179.147:16392/login.do");
         System.out.println(content);
     }
 
@@ -42,6 +43,10 @@ public class HttpContentUtils {
         String result = null;
         method.addRequestHeader("Accept-Encoding", "gzip");
         method.setRequestHeader("Connection", "close");
+        // 限制垃圾行
+        // method.getParams().makeStrict();
+        method.getParams().setIntParameter(HttpMethodParams.STATUS_LINE_GARBAGE_LIMIT, 5);
+
         try {
             int status = httpClient.executeMethod(method);
             if (status != 200) {
