@@ -69,4 +69,23 @@ public class FileContentUtils {
 
         return result;
     }
+
+    public static String readAsString(String file) {
+        File in = new File(file);
+        StringBuffer sb = new StringBuffer();
+        try {
+            FileReader fr = new FileReader(in);
+            BufferedReader reader = new BufferedReader(fr);
+            String data = reader.readLine();
+            while (data != null) {
+                sb.append(data + "\n");
+                data = reader.readLine();
+            }
+            reader.close();
+            fr.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return sb.toString();
+    }
 }
