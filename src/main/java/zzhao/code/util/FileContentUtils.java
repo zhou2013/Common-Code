@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.poi.hssf.record.formula.functions.T;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -22,12 +21,15 @@ import com.google.common.collect.Sets;
  */
 public class FileContentUtils {
 
-    public static void writeToFile(Collection<T> contents, String file) throws IOException {
+    public static void writeToFile(Collection<?> contents, String file) throws IOException {
         FileWriter writer = new FileWriter(file);
-        for (Object obj : contents) {
-            writer.write(obj.toString() + "\n");
+        try {
+            for (Object obj : contents) {
+                writer.write(obj.toString() + "\n");
+            }
+        } finally {
+            writer.close();
         }
-        writer.close();
     }
 
     public static List<String> readAsList(String file) {
