@@ -2,6 +2,7 @@ package zzhao.code.http;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.BasicClientConnectionManager;
 import org.apache.http.impl.conn.PoolingClientConnectionManager;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
@@ -30,6 +31,19 @@ public class HttpClientUtils {
         connManager.setMaxTotal(maxTotal);
         connManager.setDefaultMaxPerRoute(maxPerRoute);
         HttpClient httpClient = new DefaultHttpClient(connManager, httpParams);
+        return httpClient;
+    }
+
+    public static HttpClient getSingleHttpClient() {
+        return getSingleHttpClient(CONNECT_TIMEOUT, SO_TIMEOUT);
+    }
+
+    public static HttpClient getSingleHttpClient(int connectTimeOut, int soTimeOut) {
+        HttpParams httpParams = new BasicHttpParams();
+        HttpConnectionParams.setConnectionTimeout(httpParams, connectTimeOut);
+        HttpConnectionParams.setSoTimeout(httpParams, soTimeOut);
+        BasicClientConnectionManager httpConnectionManager = new BasicClientConnectionManager();
+        HttpClient httpClient = new DefaultHttpClient(httpConnectionManager);
         return httpClient;
     }
 }
