@@ -8,6 +8,9 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 
+import zzhao.code.http.extend.HttpClientConnectionManager;
+import zzhao.code.http.extend.HttpClientPoolConnectionManager;
+
 /**
  *
  * @author zzhao
@@ -27,7 +30,7 @@ public class HttpClientUtils {
         HttpParams httpParams = new BasicHttpParams();
         HttpConnectionParams.setConnectionTimeout(httpParams, connectTimeOut);
         HttpConnectionParams.setSoTimeout(httpParams, soTimeOut);
-        PoolingClientConnectionManager connManager = new PoolingClientConnectionManager();
+        PoolingClientConnectionManager connManager = new HttpClientPoolConnectionManager();
         connManager.setMaxTotal(maxTotal);
         connManager.setDefaultMaxPerRoute(maxPerRoute);
         HttpClient httpClient = new DefaultHttpClient(connManager, httpParams);
@@ -42,7 +45,7 @@ public class HttpClientUtils {
         HttpParams httpParams = new BasicHttpParams();
         HttpConnectionParams.setConnectionTimeout(httpParams, connectTimeOut);
         HttpConnectionParams.setSoTimeout(httpParams, soTimeOut);
-        BasicClientConnectionManager httpConnectionManager = new BasicClientConnectionManager();
+        BasicClientConnectionManager httpConnectionManager = new HttpClientConnectionManager();
         HttpClient httpClient = new DefaultHttpClient(httpConnectionManager);
         return httpClient;
     }
