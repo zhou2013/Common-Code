@@ -18,6 +18,9 @@ import org.apache.log4j.Logger;
 
 import com.google.common.collect.Maps;
 
+import zzhao.code.http.extend.HttpClientConnectionManager;
+import zzhao.code.http.extend.HttpClientPoolConnectionManager;
+
 /**
  *
  * @author zzhao
@@ -51,9 +54,9 @@ public class HttpClientUtils {
         HttpConnectionParams.setSoTimeout(httpParams, soTimeOut);
         PoolingClientConnectionManager connManager;
         if (hosts == null) {
-            connManager = new PoolingClientConnectionManager();
+            connManager = new HttpClientPoolConnectionManager();
         } else {
-            connManager = new PoolingClientConnectionManager(SchemeRegistryFactory.createDefault(),
+            connManager = new HttpClientPoolConnectionManager(SchemeRegistryFactory.createDefault(),
                             new SpecialDNSResolver(hosts));
         }
         connManager.setMaxTotal(maxTotal);
@@ -70,7 +73,7 @@ public class HttpClientUtils {
         HttpParams httpParams = new BasicHttpParams();
         HttpConnectionParams.setConnectionTimeout(httpParams, connectTimeOut);
         HttpConnectionParams.setSoTimeout(httpParams, soTimeOut);
-        BasicClientConnectionManager httpConnectionManager = new BasicClientConnectionManager();
+        BasicClientConnectionManager httpConnectionManager = new HttpClientConnectionManager();
         HttpClient httpClient = new DefaultHttpClient(httpConnectionManager);
         return httpClient;
     }
