@@ -24,7 +24,8 @@ import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
@@ -35,7 +36,8 @@ import com.google.gson.Gson;
  * @version 2015年11月25日
  */
 public class AbstractHttpService {
-    private Logger logger = Logger.getLogger(AbstractHttpService.class);
+
+    private static final Logger logger = LoggerFactory.getLogger(AbstractHttpService.class);
 
     protected HttpClient client;
 

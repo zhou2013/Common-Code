@@ -19,7 +19,8 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Maps;
 
@@ -30,7 +31,8 @@ import com.google.common.collect.Maps;
  * @version 2013-12-18
  */
 public class SecurityUtils {
-    private static final Logger logger = Logger.getLogger(SecurityUtils.class);
+
+    private static final Logger logger = LoggerFactory.getLogger(SecurityUtils.class);
 
     private static final String ALIAS_PREFIX = "zzhao";
 

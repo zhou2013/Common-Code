@@ -13,7 +13,8 @@ import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * http 内容扒取工具
@@ -24,7 +25,8 @@ import org.apache.log4j.Logger;
  * @version 2015年12月2日
  */
 public class HttpContentUtils {
-    private static final Logger logger = Logger.getLogger(HttpContentUtils.class);
+
+    private static final Logger logger = LoggerFactory.getLogger(HttpContentUtils.class);
 
     public static void main(String[] args) {
         String content = getHtmlContent("http://163.com");

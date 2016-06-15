@@ -6,7 +6,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.apache.http.conn.DnsResolver;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Maps;
 
@@ -17,7 +18,7 @@ import com.google.common.collect.Maps;
  */
 class SpecialDNSResolver implements DnsResolver {
 
-    private static final Logger logger = Logger.getLogger(SpecialDNSResolver.class);
+    private static final Logger logger = LoggerFactory.getLogger(SpecialDNSResolver.class);
 
     private Map<String, InetAddress[]> hostMaps = Maps.newHashMap();
 

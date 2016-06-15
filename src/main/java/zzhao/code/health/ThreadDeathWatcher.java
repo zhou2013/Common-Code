@@ -6,7 +6,8 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Lists;
 
@@ -16,7 +17,8 @@ import com.google.common.collect.Lists;
  * @version 2014-7-11
  */
 public class ThreadDeathWatcher {
-    private static final Logger logger = Logger.getLogger(ThreadDeathWatcher.class);
+
+    private static final Logger logger = LoggerFactory.getLogger(ThreadDeathWatcher.class);
 
     private static final LinkedBlockingDeque<Entry> pendingEntries = new LinkedBlockingDeque<Entry>();
     private static final Watcher watcher = new Watcher();

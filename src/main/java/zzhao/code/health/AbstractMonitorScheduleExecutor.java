@@ -12,16 +12,12 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Logger;
-
 /**
  * 带状态检查和提醒的定时任务执行器
  * @author zzhao
  * @version 2015年12月3日
  */
 public abstract class AbstractMonitorScheduleExecutor {
-
-    private static final Logger logger = Logger.getLogger(AbstractMonitorScheduleExecutor.class);
 
     private ScheduledExecutorService executor;
 

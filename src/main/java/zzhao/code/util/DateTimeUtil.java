@@ -6,7 +6,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
 *
@@ -15,7 +16,7 @@ import org.apache.log4j.Logger;
 */
 public class DateTimeUtil {
 
-    private static final Logger logger = Logger.getLogger(DateTimeUtil.class);
+    private static final Logger logger = LoggerFactory.getLogger(DateTimeUtil.class);
 
     public final static long MS_PER_DAY = 86400000L;
     public final static long MS_PER_HOUR = 3600000L;
