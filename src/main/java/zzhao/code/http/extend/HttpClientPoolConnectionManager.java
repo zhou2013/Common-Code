@@ -37,6 +37,7 @@ public class HttpClientPoolConnectionManager extends PoolingClientConnectionMana
     public HttpClientPoolConnectionManager(final SchemeRegistry schemeRegistry, final long timeToLive, final TimeUnit tunit,
                     final DnsResolver dnsResolver) {
         super(schemeRegistry, timeToLive, tunit, dnsResolver);
+        // 使用第三方dns resolver有点问题~~~~
         if (dnsResolver != null) {
             this.dnsResolver = dnsResolver;
         } else {
@@ -46,6 +47,6 @@ public class HttpClientPoolConnectionManager extends PoolingClientConnectionMana
 
     @Override
     protected ClientConnectionOperator createConnectionOperator(SchemeRegistry schreg) {
-        return new HttpClientConnectionOperator(schreg, this.dnsResolver);
+        return new HttpClientConnectionOperator(schreg);
     }
 }
